@@ -12,7 +12,13 @@ export class MailService {
     };
     return sgMail
       .send(msg)
-      .then(() => console.log(`Notification mail sent to ${email}`))
-      .catch((error) => console.error(error));
+      .then(() => {
+        console.log('Email sent to', email);
+        return true;
+      })
+      .catch((error) => {
+        console.error(error);
+        return false;
+      });
   }
 }
